@@ -8,11 +8,16 @@ import (
 )
 
 func main() {
-	//request := models.InvestorRequest{InterestRate: 8, BeginningBalance: 180000.00, YearsHeld: 10, TaxRate: 10, AfterTaxes: false, DesiredAmount: 0}
-	requestMillion := models.InvestorRequest{InterestRate: 8, BeginningBalance: 180000.00, YearsHeld: 10, TaxRate: 10, AfterTaxes: true, DesiredAmount: 5000000.00}
+	var emptyValue *int = nil
+	var beginngBal float64 = 180000.00
+	yearsHeld := float64(8.9)
+	afterTaxes := true
+	request := models.InvestorRequest{InterestRate: &(yearsHeld), BeginningBalance: &beginngBal, YearsHeld: emptyValue, TaxRate: 10, AfterTaxes: &afterTaxes, DesiredAmount: 0}
+	//requestMillion := models.InvestorRequest{InterestRate: 8, BeginningBalance: 180000.00, YearsHeld: 10, TaxRate: 10, AfterTaxes: true, DesiredAmount: 5000000.00}
 	fmt.Println("main app")
 	//response, err := investor.CompoundInterest(request)
-	response, err := investor.GreaterThanDesiredBalance(requestMillion)
+	response, err := investor.CompoundInterest(request)
+	//response, err := investor.GreaterThanDesiredBalance(requestMillion)
 	if err != nil {
 		fmt.Println(err)
 	}
