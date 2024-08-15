@@ -6,11 +6,15 @@ import (
 
 	"github.com/go-playground/validator/v10"
 	"github.com/hari-iyer-work/golang-work/tree/main/InvestorAPI/internal/models"
+	valid "github.com/hari-iyer-work/golang-work/tree/main/InvestorAPI/internal/validators"
 	"github.com/jinzhu/copier"
 )
 
 func ValidateRequest(req models.InvestorRequest) (isValid bool, err error) {
 	validate := validator.New()
+	validate.RegisterValidation("CustomValidationFloat", valid.CustomValidationFloat)
+	validate.RegisterValidation("CustomValidationInt", valid.CustomValidationInt)
+	validate.RegisterValidation("CustomValidationBool", valid.CustomValidationBool)
 	err = validate.Struct(req)
 	if err != nil {
 		// Validation failed, handle the error

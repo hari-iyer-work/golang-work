@@ -5,10 +5,10 @@ import (
 )
 
 type InvestorRequest struct {
-	InterestRate     optional.Float64 `validate:"omitempty,required"`
-	BeginningBalance optional.Float64 `validate:"required"`
-	YearsHeld        optional.Int     `validate:"required"`
-	TaxRate          optional.Float64 `validate:"required,omitempty"`
-	AfterTaxes       optional.Bool    `validate:"required"`
-	DesiredAmount    optional.Float64 `validate:"required,omitempty"`
+	InterestRate     optional.Float64 `validate:"CustomValidationFloat"`
+	BeginningBalance optional.Float64 `validate:"CustomValidationFloat"`
+	YearsHeld        optional.Int     `validate:"CustomValidationInt"`
+	TaxRate          optional.Float64 `validate:"CustomValidationFloat"`
+	AfterTaxes       optional.Bool    `validate:"CustomValidationBool"`
+	DesiredAmount    optional.Float64 `validate:"CustomValidationFloat"`
 }
