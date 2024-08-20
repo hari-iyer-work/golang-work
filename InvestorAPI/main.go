@@ -4,7 +4,7 @@ import (
 	"fmt"
 
 	investor "InvestorAPI/internal"
-	models "InvestorAPI/models"
+	models "InvestorAPI/internal/models"
 	"github.com/markphelps/optional"
 )
 
