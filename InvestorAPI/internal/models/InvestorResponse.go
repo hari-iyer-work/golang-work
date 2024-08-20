@@ -8,14 +8,14 @@ import (
 )
 
 type InvestorResponse struct {
-	InterestRate     float64
-	BeginningBalance optional.Float64 `validate:"CustomValidationFloat"`
+	InterestRate     optional.Float64
+	BeginningBalance optional.Float64
 	EndingBalance    float64
-	YearsHeld        int
-	TaxRate          float64
+	YearsHeld        optional.Int
+	TaxRate          optional.Float64
 	AfterTaxes       bool
 	CurrentYear      time.Time
-	DesiredAmount    float64
+	DesiredAmount    optional.Float64
 }
 
 func (res InvestorResponse) String() (string, error) {
