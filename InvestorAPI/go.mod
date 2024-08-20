@@ -1,4 +1,4 @@
-module InvestorAPI
+module  github.com/hari-iyer-work/golang-work/InvestorAPI
 
 go 1.21.2
 
@@ -21,7 +21,7 @@ require (
 )
 
 require (
-    github.com/hari-iyer-work/golang-work/InvestorAPI v0.0.0-20240820005527-6ce83cbf2c0f 
+    github.com/hari-iyer-work/golang-work/InvestorAPI latest
 )
 
-replace github.com/hari-iyer-work/golang-work/InvestorAPI => github.com/hari-iyer-work/golang-work/InvestorAPI master
+replace InvestorAPI => github.com/hari-iyer-work/golang-work/InvestorAPI master

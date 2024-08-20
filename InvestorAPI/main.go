@@ -3,8 +3,8 @@ package main
 import (
 	"fmt"
 
-	investor "github.com/hari-iyer-work/golang-work/tree/main/InvestorAPI/internal"
-	models "github.com/hari-iyer-work/golang-work/tree/main/InvestorAPI/internal/models"
+	investor "InvestorAPI/internal"
+	models "InvestorAPI/models"
 	"github.com/markphelps/optional"
 )
 
