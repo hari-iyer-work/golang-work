@@ -4,9 +4,9 @@ import (
 	"fmt"
 	"time"
 
+	"InvestorAPI/models"
+	valid "InvestorAPI/validators"
 	"github.com/go-playground/validator/v10"
-	"github.com/hari-iyer-work/golang-work/tree/main/InvestorAPI/internal/models"
-	valid "github.com/hari-iyer-work/golang-work/tree/main/InvestorAPI/internal/validators"
 	"github.com/jinzhu/copier"
 )
 

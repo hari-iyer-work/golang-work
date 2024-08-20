@@ -1,4 +1,4 @@
-module github.com/hari-iyer-work/golang-work/tree/main/InvestorAPI
+module InvestorAPI
 
 go 1.21.2
 
@@ -20,4 +20,8 @@ require (
 	golang.org/x/text v0.14.0 // indirect
 )
 
-replace github.com/hari-iyer-work/golang-work/tree/main/InvestorAPI/internal/models => github.com/hari-iyer-work/golang-work/tree/main/InvestorAPI/internal/models v0.0.0-db677bbabefb3ba3d645e13805e9cacc5e37c1da
+require (
+    github.com/hari-iyer-work/golang-work/InvestorAPI v0.0.0-20240820005527-6ce83cbf2c0f 
+)
+
+replace github.com/hari-iyer-work/golang-work/InvestorAPI => github.com/hari-iyer-work/golang-work/InvestorAPI master
