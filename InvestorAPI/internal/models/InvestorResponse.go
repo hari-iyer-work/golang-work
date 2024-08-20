@@ -11,10 +11,10 @@ type InvestorResponse struct {
 	InterestRate     optional.Float64
 	BeginningBalance optional.Float64
 	EndingBalance    float64
-	YearsHeld        optional.Int
+	YearsHeld        optional.Int `json:"-"`
 	TaxRate          optional.Float64
 	AfterTaxes       bool
-	CurrentYear      time.Time
+	CurrentYear      time.Time `json:"InvestmentYear"`
 	DesiredAmount    optional.Float64
 }
 
