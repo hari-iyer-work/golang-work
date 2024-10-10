@@ -10,6 +10,11 @@ import (
 )
 
 func main() {
+	resp, err := investor.TimeSeriesStockData()
+	if err != nil {
+		fmt.Println("error" + err.Error())
+	}
+	fmt.Println("response " + resp)
 	//var emptyValue optional.Int
 	var beginngBal optional.Float64
 	beginngBal.Set(180000.00)

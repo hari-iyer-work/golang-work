@@ -12,16 +12,16 @@ type apiCall interface {
 	unmarshalJson(body []byte) (interface{}, error)
 }
 
-type params struct {
+type Params struct {
 	paramName  string
 	paramValue string
 }
-type callToApi struct {
+type CallToApi struct {
 	url string
 }
 
 // http calls
-func (p callToApi) makeCall(urlString string, queryParams []params, pathParams []params) ([]byte, error) {
+func (p CallToApi) MakeCall(urlString string, queryParams []Params, pathParams []Params) ([]byte, error) {
 	parsedUrl, err := url.Parse(urlString)
 	if err != nil {
 		fmt.Println("Error:", err)
@@ -53,6 +53,15 @@ func (p callToApi) makeCall(urlString string, queryParams []params, pathParams [
 	}
 
 	return body, nil
+}
+
+func (p *Params) SetName(paramName string) {
+	p.paramName = paramName
+
+}
+
+func (p *Params) SetValue(paramValue string) {
+	p.paramValue = paramValue
 }
 
 // grpc calls

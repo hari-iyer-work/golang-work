@@ -1,7 +1,7 @@
 package investor
 
 import (
-	alpha "InvestorAPI/internal/apis/AlphaApiCall"
+	apis "InvestorAPI/internal/apis"
 	"InvestorAPI/internal/models"
 	valid "InvestorAPI/internal/validators"
 	"fmt"
@@ -99,8 +99,22 @@ func GreaterThanDesiredBalance(req models.InvestorRequest) (res []*models.Invest
 
 	return
 }
-func timeSeriesStockData() {
-	url := "https://www.alphavantage.co/query?function=TIME_SERIES_MONTHLY&symbol=IBM&apikey=" + os.Getenv("apikey")
-	fmt.Println(alpha.MakeCall(url))
+func TimeSeriesStockData() (string, error) {
+	url := "https://www.alphavantage.co/query"
+	alphaTimeSeriesQueryParam := make([]apis.Params, 3)
 
+	alphaTimeSeriesQueryParam[0].SetName("function")
+	alphaTimeSeriesQueryParam[0].SetValue("TIME_SERIES_MONTHLY")
+	alphaTimeSeriesQueryParam[1].SetName("symbol")
+	alphaTimeSeriesQueryParam[1].SetValue("IBM")
+	alphaTimeSeriesQueryParam[2].SetName("apikey")
+	alphaTimeSeriesQueryParam[2].SetValue(os.Getenv("apikey"))
+	apiCall := apis.AlphaApiCall{}
+	resp, err := apiCall.MakeCall(url, alphaTimeSeriesQueryParam, nil)
+	if err != nil {
+		return "", err
+	}
+
+	fmt.Println(string(resp))
+	return string(resp), err
 }
