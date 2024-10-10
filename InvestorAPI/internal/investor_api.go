@@ -1,11 +1,13 @@
 package investor
 
 import (
-	"fmt"
-	"time"
-
+	alpha "InvestorAPI/internal/apis/AlphaApiCall"
 	"InvestorAPI/internal/models"
 	valid "InvestorAPI/internal/validators"
+	"fmt"
+	"os"
+	"time"
+
 	"github.com/go-playground/validator/v10"
 	"github.com/jinzhu/copier"
 )
@@ -33,6 +35,7 @@ func CompoundInterest(req models.InvestorRequest) (res []*models.InvestorRespons
 	if err != nil && isValid == false {
 		return nil, err
 	}
+	// intialize ending balance
 	endingBalance := req.BeginningBalance.MustGet()
 	interestRate := (1 + (req.InterestRate.MustGet() / 100))
 	taxRate := 1 - (req.TaxRate.MustGet() / 100)
@@ -95,4 +98,9 @@ func GreaterThanDesiredBalance(req models.InvestorRequest) (res []*models.Invest
 	}
 
 	return
+}
+func timeSeriesStockData() {
+	url := "https://www.alphavantage.co/query?function=TIME_SERIES_MONTHLY&symbol=IBM&apikey=" + os.Getenv("apikey")
+	fmt.Println(alpha.MakeCall(url))
+
 }
